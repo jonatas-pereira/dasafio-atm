@@ -6,7 +6,7 @@ import { SaqueCalc } from "./core/operacao/saque";
 export class SaqueService {
   constructor(private readonly saqueCalc: SaqueCalc) { }
 
-  calcQtdCedulas(valor: number): QtdNotas {
+  public calcQtdCedulas(valor: number): QtdNotas {
     return this.saqueCalc.calcQtdCedulas(valor)
   }
 }

@@ -1,5 +1,5 @@
-import { IsInt, IsNotEmpty, IsNumber, IsPositive, Min } from "class-validator";
-
+import { IsInt, IsNotEmpty, IsPositive, Min } from "class-validator";
+  
 export class SaqueDto {
   @IsInt({ message: 'Valor do campo dever ser numerico e inteiro.'})
   @Min(2, { message: 'Valor minimo para a campo deve ser 2.'})

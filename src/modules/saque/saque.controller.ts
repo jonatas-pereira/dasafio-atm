@@ -7,7 +7,7 @@ export class SaqueController {
   constructor(private readonly saqueService: SaqueService) { }
 
   @Post()
-  calcQtdCedulas(@Body() { valor }: SaqueDto) {
+  public calcQtdCedulas(@Body() { valor }: SaqueDto) {
     return this.saqueService.calcQtdCedulas(valor)
   }
 }
