@@ -1,7 +1,7 @@
-import { ConflictException, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { QtdNotas } from "./interface/qtd-cedulas.interface";
 import { SaqueCalc } from "./core/operacao/saque";
-import { MyAppError } from "src/utils/errors/app-erro";
+import { MyAppError } from "../../utils/errors/app-erro";
 
 @Injectable()
 export class SaqueService {
@@ -9,7 +9,7 @@ export class SaqueService {
 
   public calcQtdCedulas(valor: number): QtdNotas {
     const result = this.saqueCalc.calcQtdCedulas(valor)
-    if(!result) throw new MyAppError("Valor inválido", 400)
+    if(!result) throw new MyAppError("Valor invalido", 400)
     return result
   }
 }
