@@ -1,11 +1,10 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { QtdNotas } from "../../interface/qtd-cedulas.interface";
-import { MyAppError } from "src/utils/errors/app-erro";
 import { ISaque } from "../interfaces/ISaque";
 
 @Injectable()
 export class SaqueCalc implements ISaque {
-  public calcQtdCedulas(valor: number): QtdNotas {
+  public calcQtdCedulas(valor: number): QtdNotas | void {
     const notas = [100, 50, 20, 10, 5, 2] as const
     const resultado: QtdNotas = {
       "100": 0,
@@ -21,7 +20,7 @@ export class SaqueCalc implements ISaque {
       valor = valor % nota
     }
 
-    if(valor !== 0) throw new MyAppError("Valor inválido", 400)
+    if(valor !== 0) return
 
     return resultado
   }
