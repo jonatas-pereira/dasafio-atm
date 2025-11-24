@@ -73,7 +73,7 @@ Teste realizado para vaga de estágio da Morada.ai, desafio envolve a implementa
 
 ### Testes unitários
 
-Para assegurar o cumprimento correto da regras de negócio na operação, foram realizados testes para validar seu coportamento em diferentes cenários.
+Para assegurar o cumprimento correto da regras de negócio na operação, foram realizados testes para validar seu comportamento em diferentes cenários.
 
 ### Principais desafios no teste
 
