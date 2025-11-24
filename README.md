@@ -21,9 +21,65 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Desafio técnico Morada.ai: Caixa eletrôcico
+
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Teste realizado para vaga de estágio da Morada.ai, desafio envolve a implementação para um serviço de saque de caixa eletrônico. Basicamente, envolve o processo pelo qual é realizada a operação. Para esse desafio, foi utilizado o framework NestJS para a criação da API com endpoint que realiza esse processo, que por sua vez se dá por meio da entrada de um determidado valor inteiro e positvo no body da requisição, definido pelo método POST, e que tem como resposta a chamada um JSON com a quantidade de cédulas referente a cada valor de cédula disponível na nossa moeda.
+
+### Corpo da requisição:
+
+- URL: /api/saque
+- Método: POST
+- Entrada (JSON):
+
+```json
+{
+  "valor": 380,
+}
+```
+
+### Regras de validação
+
+- valor deve ser um número inteiro e positivo
+- Deve ser maior que 1
+- O valor deve ser componível pelas notas disponíveis
+- Valores não decomponíveis retornam erro de valor inválido
+
+### Resposta - 200 OK
+
+```json
+{
+  "100": 3,
+  "50": 1,
+  "20": 1,
+  "10": 1,
+  "5": 0,
+  "2": 0
+}
+```
+
+### Resposta — 400 Valor inválido
+
+```json
+{
+  "message": [
+    "Valor invalido"
+  ],
+  "error": "BAD_REQUEST",
+  "statusCode": 400
+}
+```
+
+### Testes unitários
+
+Para assegurar o cumprimento correto da regras de negócio na operação, foram realizados testes para validar seu coportamento em diferentes cenários.
+
+### Principais desafios no teste
+
+Modelar a arquitetura da solução foi um dos principais desafios do projeto. A escolha pelo NestJS foi determinante, pois o framework oferece uma base sólida para a construção de aplicações organizadas, escaláveis e alinhadas aos princípios SOLID. Sua estrutura modular facilitou tanto o desenvolvimento quanto facilita em manutenção e futura evolução da solução. 
+
+Mas em especial a lógica da operação para contagem das notas, exigiu muita análise sobre a solução desse problema.
 
 ## Project setup
 
@@ -56,43 +112,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
